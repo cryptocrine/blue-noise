@@ -13,7 +13,7 @@ tokenF.interface = (function() {
   let draw = function() {
     $('main').empty()
     // some fullscreen/mobile logic here
-    fullscreen(window.width, window.height)
+    fullscreen(window.innerWidth, window.innerHeight)
   }
   
   let update = function() {
@@ -39,15 +39,29 @@ tokenF.interface = (function() {
     
     let left         = options.offsetLeft
     let top          = options.headerTop + options.headerHeight
-    let height       = options.heightPercentile * h
+    let height       = options.height
     let width        = w - (options.offsetLeft + options.offsetRight || options.offsetLeft)
     
     $('#' + options.containerID)
        .css({
          left  : left   + 'px',
          top   : top    + 'px',
-         height: height + 'px',
+         height: height,
          width : width  + 'px',
+       })
+    $('#' + options.containerListID)
+       .css({
+         left  : '0%',
+         top   : options.headerHeight + 'px',
+         height: 'calc(100% - ' + options.headerHeight + 'px)',
+         width : '100%',
+       })
+    $('#' + options.containerHeaderID)
+       .css({
+         left  : '0%',
+         top   : '0%',
+         height: options.headerHeight + 'px',
+         width : '100%',
        })
   }
   let collapse = function() {
