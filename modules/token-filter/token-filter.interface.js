@@ -39,14 +39,14 @@ tokenF.interface = (function() {
     
     let left         = options.offsetLeft
     let top          = options.headerTop + options.headerHeight
-    let height       = options.height
+    let height       = options.heightPercentile
     let width        = w - (options.offsetLeft + options.offsetRight || options.offsetLeft)
     
     $('#' + options.containerID)
        .css({
          left  : left   + 'px',
          top   : top    + 'px',
-         height: height,
+         height: 'calc(' + height + '% - ' + options.headerHeight + 'px)',
          width : width  + 'px',
        })
     $('#' + options.containerListID)
