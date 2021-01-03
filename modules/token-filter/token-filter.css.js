@@ -13,7 +13,7 @@ tokenF.css = (function() {
   let start = function() {
     $('.' + className).remove()
     for (const ruleName in rules) {
-      injectCSS('.' + className, rules[ruleName])
+      injectCSS(className, rules[ruleName])
     }
     
     $('body').on('uncss-tokenF',function() { $('.' + className).remove() })
