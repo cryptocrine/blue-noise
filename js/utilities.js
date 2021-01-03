@@ -1,17 +1,4 @@
 utilities = (function() {
-  /* https://stackoverflow.com/a/2901298 */
-  let commaThis = function(x) {
-    if (typeof x == 'undefined') { return 0 }
-    var parts = x.toString().split('.')
-    parts[0]  = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g,',')
-    return parts.join('.') }
-
-  let random = function(ceiling, min) {
-     if (min && min > ceiling) { [ceiling, min] = [min, ceiling] }
-     let c = ceiling || 1
-     let m = min     || 0
-     return (c - m) * Math.random() + m }
-
   let clone = function(obj) {
      var copy;
      if (null == obj || 'object' != typeof obj) { return obj }
@@ -29,10 +16,28 @@ utilities = (function() {
        for (var attr in obj) { if (obj.hasOwnProperty(attr)) { copy[attr] = clone(obj[attr]) } }
        return copy }
      throw new Error('Unable to copy object! Type not supported.') }
+  
+  /* https://stackoverflow.com/a/2901298 */
+  let commaThis = function(x) {
+    if (typeof x == 'undefined') { return 0 }
+    var parts = x.toString().split('.')
+    parts[0]  = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g,',')
+    return parts.join('.') }
+  
+  let inject = function(className, rule) {
+    $('body').append('<div class="' + className + '">&shy;<style>' + rule + '</style></div>')
+  }
+  
+  let random = function(ceiling, min) {
+     if (min && min > ceiling) { [ceiling, min] = [min, ceiling] }
+     let c = ceiling || 1
+     let m = min     || 0
+     return (c - m) * Math.random() + m }
  
    return {
      clone      : clone,
      commaThis  : commaThis,
+     inject     : inject,
      random     : random,
    }
 })()
@@ -40,4 +45,5 @@ utilities = (function() {
 // Global exposure
 window.clone     = utilities.clone
 window.commaThis = utilities.commaThis
+window.injectCSS = utilities.inject
 window.random    = utilities.random
