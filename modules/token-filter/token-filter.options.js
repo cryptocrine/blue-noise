@@ -7,13 +7,14 @@ tokenF.options = (function() {
   }
 
   let optionsDrawing = {
-    containerID      : 'token-filter-list',
-    containerHeaderID: 'token-filter-header',
+    containerID      : 'tokenF',
+    containerListID  : 'tokenF-list',
+    containerHeaderID: 'tokenF-header',
     
-    subheadersID     : '.list-header-element.sub',
-    subelementsID    : '.token-element:not(.exclude)',
+    subheadersID     : '.tokenF-header-element.sub',
+    subelementsID    : '.tokenF-element:not(.exclude)',
     
-    headerCloseID    : 'list-header-close',
+    headerCloseID    : 'tokenF-header-close',
     
     headerHeight     : 32,
     headerTop        : 28,
@@ -73,8 +74,6 @@ tokenF.options = (function() {
     }
     return [optionsDrawing, optionsFilter]
   }
-  
-
  
   return {
     // Getters & Setters
