@@ -25,9 +25,32 @@ tokenF.interface = (function() {
     collapsedWidth   : 'calc(333px + 1.3em + 1.2em + 1.2em)',
   }
   // Interface Options surface
+  
+  let draw = function() {
+    $('main').empty()
+    // some fullscreen/mobile logic here
+    fullscreen(window.width, window.height)
+  }
+  
+  let update = function() {
+
+  }
 
   /* > Container for Module */
   let fullscreen = function(w, h) {
+    let d = ''
+    d += '<div id="tokenF">'
+    d += '<div id="tokenF-header">'
+    d +=   '<div id="tokenF-header-left"></div>'
+    d +=   '<div id="tokenF-header-right"></div>'
+    d +=   '<div id="tokenF-header-menu"></div>'
+    d +=   '<div id="tokenF-header-menu-button"><button id=""><span></span><span></span><span></span></button></div>'
+    d +=   '<div id="tokenF-header-close"></div>'
+    d += '</div>'
+    d += '<div id="tokenF-list"><div id="tokenF-list-left"></div><div id="tokenF-list-right"></div></div>'
+    d += '</div>'
+    $('body').append(d)
+    
     let left         = options.offsetLeft
     let top          = options.headerTop + options.headerHeight
     let height       = options.heightPercentile * h
@@ -64,7 +87,8 @@ tokenF.interface = (function() {
   }
 
   return {
-    containerDraw: fullscreen,
-    containerCollapse: collapse,
+    
+    draw: draw,
+    collapse: collapse,
   }
 })()
