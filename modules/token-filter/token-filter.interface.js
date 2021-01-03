@@ -40,7 +40,7 @@ tokenF.interface = (function() {
     let left         = options.offsetLeft
     let top          = options.headerTop + options.headerHeight
     let height       = options.heightPercentile
-    let width        = w - (options.offsetLeft + options.offsetRight || options.offsetLeft)
+    let width        = w - (options.offsetLeft + (options.offsetRight || options.offsetLeft))
     
     $('#' + options.containerID)
        .css({
@@ -73,7 +73,7 @@ tokenF.interface = (function() {
     let $headerClose = $('#' + options.headerCloseID)
     
     if ($container.hassClass('collapsed')) {
-      let width = window.innerWidth - (options.offsetLeft + options.offsetRight || options.offsetLeft)
+      let width = window.innerWidth - (options.offsetLeft + (options.offsetRight || options.offsetLeft))
       $container.removeClass('collapsed').css('width', width)
       $subheaders.css('display','inline-block')
       $subelements.css('display','inline-block')
