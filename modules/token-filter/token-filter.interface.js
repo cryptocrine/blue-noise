@@ -10,10 +10,10 @@ tokenF = typeof tokenF != 'undefined' ? tokenF : {}
 tokenF.interface = (function() {
   let deriveOptions = tokenF.options.drawingValues
   
-  let draw = function() {
-    $('main').empty()
+  let draw = function(anchor) {
+    $(anchor).empty()
     // some fullscreen/mobile logic here
-    fullscreen(window.innerWidth, window.innerHeight)
+    fullscreen(anchor, window.innerWidth, window.innerHeight)
   }
   
   let update = function() {
@@ -21,7 +21,7 @@ tokenF.interface = (function() {
   }
 
   /* > Container for Module */
-  let fullscreen = function(w, h) {
+  let fullscreen = function(anchor, w, h) {
     let options = deriveOptions()
     
     let d = ''
@@ -35,7 +35,7 @@ tokenF.interface = (function() {
     d += '</div>'
     d += '<div id="tokenF-list"><div id="tokenF-list-left"></div><div id="tokenF-list-right"></div></div>'
     d += '</div>'
-    $('body').append(d)
+    $(anchor).append(d)
     
     let left         = options.offsetLeft
     let top          = options.headerTop + options.headerHeight
