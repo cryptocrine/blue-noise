@@ -20,7 +20,7 @@ tokenF.options = (function() {
     headerTop        : 28,
     offsetLeft       : 49,
     offsetTop        : 74,
-    height           : 'calc(88% - 74px)', // offsetTop
+    heightPercentile : 88, // offsetTop
     collapsedWidth   : 'calc(333px + 1.3em + 1.2em + 1.2em)',
   }
   
