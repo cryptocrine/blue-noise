@@ -8,23 +8,7 @@
 tokenF = typeof tokenF != 'undefined' ? tokenF : {}
  
 tokenF.interface = (function() {
-  // Interface Options
-  let options = {
-    containerID      : 'token-filter-list',
-    containerHeaderID: 'token-filter-header',
-    
-    subheadersID     : '.list-header-element.sub',
-    subelementsID    : '.token-element:not(.exclude)',
-    
-    headerCloseID    : 'list-header-close',
-    
-    headerHeight     : 32,
-    headerTop        : 28,
-    offsetLeft       : 49,
-    heightPercentile : 0.88,
-    collapsedWidth   : 'calc(333px + 1.3em + 1.2em + 1.2em)',
-  }
-  // Interface Options surface
+  let deriveOptions = tokenF.options.drawingValues
   
   let draw = function() {
     $('main').empty()
@@ -38,6 +22,8 @@ tokenF.interface = (function() {
 
   /* > Container for Module */
   let fullscreen = function(w, h) {
+    let options = deriveOptions()
+    
     let d = ''
     d += '<div id="tokenF">'
     d += '<div id="tokenF-header">'
@@ -65,6 +51,8 @@ tokenF.interface = (function() {
        })
   }
   let collapse = function() {
+    let options = deriveOptions()
+    
     let $container = $('#' + options.containerID)
     let $subheaders = $(options.subheadersID)
     let $subelements = $(options.subelementsID)
