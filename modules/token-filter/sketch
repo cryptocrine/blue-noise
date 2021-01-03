@@ -1,0 +1,25 @@
+/*
+  Pseudo-code
+ */
+ 
+on launching token-filter
+ clear the desk
+ generate options from default
+ read options(display, menu, filter) from cookies
+ create the container
+   place header, list, minimizer, menu-button, menu
+   link fixed + scrolled
+   actionify minimizer
+   populate menu
+ read data available from cookies
+ launch first pass search if automatic
+   receive pages
+   parse pages
+   filter tokens, display initial
+   look up token in saved data, check age of data
+   look up tokens
+   summarise new data
+   refilter
+   update display
+   
+ 
