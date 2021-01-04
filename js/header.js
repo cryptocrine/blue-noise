@@ -3,6 +3,7 @@
  */
 
 header = (function() {
+  // let container         = 'main'
   let headerContainer   = 'header'
   let ioContainer       = 'header-io'
   let sitejumpContainer = 'header-sitejumps'
@@ -29,7 +30,7 @@ header = (function() {
     d +=   '<div id="' + sitejumpContainer + '"></div>'
     d += '</div>'
     $('#' + headerContainer).remove()
-    $('body').append(d)
+    $('body').append(d) // not sure if we want to include it into #main or the 'body'
         
     // create & modify sitejumps
     sitejumps.forEach(function(site) {
