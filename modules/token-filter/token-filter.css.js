@@ -16,7 +16,10 @@ tokenF.css = (function() {
       injectCSS(className, rules[ruleName])
     }
     
+    // eventify the removal of these CSS rules
     $('body').on('uncss-tokenF',function() { $('.' + className).remove() })
+    
+    return true
   }
 
   return {
