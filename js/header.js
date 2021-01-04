@@ -3,6 +3,8 @@
  */
 
 header = (function() {
+  let headerContainer   = 'header'
+  let IOContainer       = 'header-io'
   let sitejumpContainer = 'header-sitejumps'
   let sitejumps = [
     {key: 'FTX',     name: 'FTX',     use: true,  url: 'https://ftx.com/#a=cryptocrine'},
@@ -20,6 +22,14 @@ header = (function() {
         sitejumpTemplate += '<div id="trading-platforms-__ID" class="trading-platform-icon">'
         sitejumpTemplate += '</div>'
         sitejumpTemplate += '</div>'
+     
+    // create header template
+    d += '<div id="' + headerContainer + '">'
+    d +=   '<div id="' + IOContainer + '"></div>'
+    d +=   '<div id="' + sitejumpContainer + '"></div>'
+    d += '</div>'
+    $('#' + headerContainer).remove()
+    $('body').append(d)
         
     // create & modify sitejumps
     sitejumps.forEach(function(site) {
