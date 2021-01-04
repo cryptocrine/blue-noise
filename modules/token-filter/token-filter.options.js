@@ -75,6 +75,23 @@ tokenF.options = (function() {
     }
     return [optionsDrawing, optionsFilter]
   }
+  
+  let saveOptions = function() {
+    // construct option keys for required portions
+    let keyheadDrawing = optionsMeta.keyhead + '-drawing'
+    let keyheadFilter  = optionsMeta.keyhead + '-filter'
+    if (!localStorage) { 
+      $('body').trigger(optionsMeta.eventNotify,'window.localStorage not available.')
+      return false
+    }
+    try {
+     let drawingOptions = JSON.stringify(optionsDrawing)
+     let filterOptions  = JSON.stringify(optionsFilter)
+     localStorage.setItem(keyheadDrawing, JSON.stringify(optionsDrawing))
+     localStorage.setItem(keyheadFilter,  JSON.stringify(optionsFilter))
+    } catch(err) { $('body').trigger(optionsMeta.eventNotify,'error saving options.') }
+    return true
+  }
  
   return {
     // Getters & Setters
