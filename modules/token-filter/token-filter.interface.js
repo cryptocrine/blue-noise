@@ -63,6 +63,7 @@ tokenF.interface = (function() {
          height: options.headerHeight + 'px',
          width : '100%',
        })
+    return true
   }
   let collapse = function() {
     let options = deriveOptions()
