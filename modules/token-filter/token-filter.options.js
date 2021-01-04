@@ -64,13 +64,19 @@ tokenF.options = (function() {
     let filterOptions = localStorage.getItem(keyheadFilter)
     if (filterOptions) {
       filterOptions = JSON.parse(filterOptions)
-      for (const key in filterOptions) {
-        if (!optionsFilter[key]) {
+      // this is a computationally costly operation, but is a small object so...
+      for (const index in filterOptions) {
+        let key = filterOptions[index].key
+        let r   = optionsFilter.forEach(function(item, i) {
+          if (item.key == key) { return i }
+          return false
+        })
+        if (!r) {
           console.log('Adding key "' + key + '" to tokenF.options.optionsFilter.')
         } else {
-          console.log('Replacing key "' + key + '" for tokenF.options.optionsFilter.')
+          console.log('Replacing key "' + key + '" for tokenF.options.optionsFilter from browser memory.')
         }
-        optionsFilter[key] = filterOptions[key]
+        optionsFilter[i] = filterOptions[index]
       }
     }
     return [optionsDrawing, optionsFilter]
