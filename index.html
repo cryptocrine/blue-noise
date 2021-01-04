@@ -35,8 +35,18 @@
    
    // Test Area
    /**/
-   tokenF.css.start()
-   tokenF.interface.draw('#main')
+   // Flow for TokenF
+   $('#main').empty()
+   var p = $.when(1)
+       p = p.then(function() {
+         return tokenF.options.load()
+       }).then(function() {
+         return tokenF.options.save()
+       }).then(function() {
+         return tokenF.css.start()
+       }).then(function() {
+         return tokenF.interface.draw('#main')
+       })
  })
  </script>
 </html>
