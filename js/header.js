@@ -4,7 +4,7 @@
 
 header = (function() {
   let headerContainer   = 'header'
-  let IOContainer       = 'header-io'
+  let ioContainer       = 'header-io'
   let sitejumpContainer = 'header-sitejumps'
   let sitejumps = [
     {key: 'FTX',     name: 'FTX',     use: true,  url: 'https://ftx.com/#a=cryptocrine'},
@@ -25,7 +25,7 @@ header = (function() {
      
     // create header template
     d += '<div id="' + headerContainer + '">'
-    d +=   '<div id="' + IOContainer + '"></div>'
+    d +=   '<div id="' + ioContainer + '"></div>'
     d +=   '<div id="' + sitejumpContainer + '"></div>'
     d += '</div>'
     $('#' + headerContainer).remove()
