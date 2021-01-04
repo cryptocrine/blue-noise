@@ -3,10 +3,12 @@
  */
 
 header = (function() {
-  // let container         = 'main'
-  let headerContainer   = 'header'
-  let ioContainer       = 'header-io'
-  let sitejumpContainer = 'header-sitejumps'
+  // let container          = 'main'
+  let headerContainer    = 'header'
+  let ioContainer        = 'header-io'
+  let sitejumpContainer  = 'header-sitejumps'
+  let clockContainer     = 'header-clocks'
+  let pricefeedContainer = 'header-pricefeed'
   let sitejumps = [
     {key: 'FTX',     name: 'FTX',     use: true,  url: 'https://ftx.com/#a=cryptocrine'},
     {key: 'Binance', name: 'Binance', use: true,  url: 'https://www.binance.com/en/register?ref=Q9AQ1AQN'},
