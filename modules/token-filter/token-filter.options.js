@@ -76,7 +76,7 @@ tokenF.options = (function() {
         } else {
           console.log('Replacing key "' + key + '" for tokenF.options.optionsFilter from browser memory.')
         }
-        optionsFilter[i] = filterOptions[index]
+        optionsFilter[r] = filterOptions[index]
       }
     }
     return [optionsDrawing, optionsFilter]
