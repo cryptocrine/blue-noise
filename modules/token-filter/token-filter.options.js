@@ -100,5 +100,6 @@ tokenF.options = (function() {
     filterValues : function() { return optionsFilter },
     // Functions
     load         : loadOptions,
+    save         : saveOptions,
   }
 })()
