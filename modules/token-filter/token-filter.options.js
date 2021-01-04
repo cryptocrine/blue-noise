@@ -67,9 +67,9 @@ tokenF.options = (function() {
       // this is a computationally costly operation, but is a small object so...
       for (const index in filterOptions) {
         let key = filterOptions[index].key
-        let r   = optionsFilter.forEach(function(item, i) {
-          if (item.key == key) { return i }
-          return false
+        let r   = false
+        optionsFilter.forEach(function(item, i) {
+          if (item.key == key) { r = true }
         })
         if (!r) {
           console.log('Adding key "' + key + '" to tokenF.options.optionsFilter.')
