@@ -35,6 +35,7 @@ header = (function() {
     $('body').append(d) // not sure if we want to include it into #main or the 'body'
         
     // create & modify sitejumps
+    d = ''
     sitejumps.forEach(function(site) {
       if (site.use) {
         d += sitejumpTemplate.replace(new RegExp('__ID','g'), site.name)
