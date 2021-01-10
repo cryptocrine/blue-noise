@@ -3,18 +3,23 @@
  */
 
 header = (function() {
+  let websiteName        = 'blue n&oslash;ise'
+
   // let container          = 'main'
-  let headerContainer    = 'header'
-  let ioContainer        = 'header-io'
-  let sitejumpContainer  = 'header-sitejumps'
-  let clockContainer     = 'header-clocks'
-  let pricefeedContainer = 'header-pricefeed'
+  let containerHeader    = 'header'
+  let containerTitle     = 'header-title'
+  let containerIO        = 'header-io'
+  let containerSitejump  = 'header-sitejumps'
+  let containerClock     = 'header-clocks'
+  let containerPriceFeed = 'header-pricefeed'
+  let containerSettings  = 'header-settings'
+  let classSitejump      = 'trading-platform-icon'
   let sitejumps = [
     {key: 'FTX',     name: 'FTX',     use: true,  url: 'https://ftx.com/#a=cryptocrine'},
     {key: 'Binance', name: 'Binance', use: true,  url: 'https://www.binance.com/en/register?ref=Q9AQ1AQN'},
     {key: 'Deribit', name: 'Deribit', use: true,  url: 'https://www.deribit.com/'},
-    {key: 'Bitmex',  name: 'Bitmex',  use: true,  url: 'https://www.bitmex.com/'},
-    {key: 'Bybit',   name: 'Bybit',   use: false, url: 'https://www.bybit.com/'},
+    {key: 'Bitmex',  name: 'Bitmex',  use: false, url: 'https://www.bitmex.com/'},
+    {key: 'Bybit',   name: 'Bybit',   use: true,  url: 'https://www.bybit.com/'},
   ]
   
   let draw = function() {
@@ -27,11 +32,15 @@ header = (function() {
         sitejumpTemplate += '</div>'
      
     // create header template
-    d += '<div id="' + headerContainer + '">'
-    d +=   '<div id="' + ioContainer + '"></div>'
-    d +=   '<div id="' + sitejumpContainer + '"></div>'
+    d += '<div id="' + containerHeader + '" class="top">'
+    d +=   '<div id="' + containerTitle + '"">' + websiteName + '</div>'
+    d +=   '<div id="' + containerIO + '"></div>'
+    d +=   '<div id="' + containerSitejump + '"></div>'
+    d +=   '<div id="' + containerClock + '"></div>'
+    d +=   '<div id="' + containerPriceFeed + '"></div>'
+    d +=   '<div id="' + containerSettings + '"></div>'
     d += '</div>'
-    $('#' + headerContainer).remove()
+    $('#' + containerHeader).remove()
     $('body').append(d) // not sure if we want to include it into #main or the 'body'
         
     // create & modify sitejumps
@@ -41,7 +50,31 @@ header = (function() {
         d += sitejumpTemplate.replace(new RegExp('__ID','g'), site.name)
       }
     })
-    $('#' + sitejumpContainer).empty().append(d)
+    $('#' + containerSitejump).empty().append(d)
+    
+    // modify the console
+    d = ''
+    d += '<div id="' + containerIO + '-out' + '" class="collapsed">'
+    d +=   '<div id="' + containerIO + '-pre"><br><br></div>'
+    d +=   'testing text\nmaybe one day 34asdasdasdasdasdasdasdasdas'
+    d += '</div>'
+    d += '<div id="' + containerIO + '-cli' + '">'
+    d +=   '<div id="' + containerIO + '-expand' + '" class="arrow-down" onclick="header.ioToggle()"></div>'
+    d +=   '<input id="' + containerIO + '-input' + '" placeholder="welcome to blue-noise"></div>'
+    d += '</div>'
+    $('#' + containerIO).append(d)
+    
+    // behaviours
+    behaviours()
+  }
+  
+  let behaviours = function() {
+    $('.' + classSitejump).on('mouseover', function() {
+      $('.' + classSitejump).parent().removeClass('active')
+      $(this).parent().addClass('active')
+    }).on('mouseleave', function() {
+      $('.' + classSitejump).parent().removeClass('active')
+    })
   }
   
   let jump = function(name) {
@@ -52,9 +85,25 @@ header = (function() {
       }
     }
   }
+  
+  // IO Functions
+  let ioToggle = function() {
+    let w = $('#' + containerIO)
+    let v = $('#' + containerIO + '-expand') 
+    let c = w.classes()
+    if (c.indexOf('expanded') > -1) {
+      w.addClass('collapsed').removeClass('expanded')
+      v.addClass('arrow-down').removeClass('arrow-up')
+    } else {
+      w.addClass('expanded').removeClass('collapsed')
+      v.addClass('arrow-up').removeClass('arrow-down')
+    }
+  }
 
   return {
     draw: draw,
     jump: jump,
+    
+    ioToggle: ioToggle,
   }
 })()
