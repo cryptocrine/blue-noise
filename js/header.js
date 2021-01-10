@@ -134,7 +134,10 @@ header = (function() {
   // PriceFeed Functions
   let pricefeedList = [{key: 'BTC-USD', display: 'BTC'},{key: 'ETH-USD', display: 'ETH'}]
   let pricefeedAggregate = {
-    ['BTC-USD']: {key: 'BTC', price: 0, sell:{volume:0,price:0,count:0}, buy:{volume:0,price:0,count:0}},
+    ['BTC-USD']: {
+      key: 'BTC', price: 0, 
+      sell:{volume:0,price:0,count:0,sizes:0},
+      buy:{volume:0,price:0,count:0,sizes:0}},
   }
   let pricefeedConnect = function() {
     let callbacks = {
@@ -161,6 +164,7 @@ header = (function() {
     
     aggr[side].volume += vol
     aggr[side].price   = ((aggr[side].price * aggr[side].count) + price) / (aggr[side].count + 1)
+    aggr[side].sizes   = ((aggr[side].sizes * aggr[side].count) + size) / (aggr[side].count + 1)
     aggr[side].count   = aggr[side].count + 1
     aggr.price = price
     
@@ -182,7 +186,7 @@ header = (function() {
     let list = pricefeedList
     let outp = []
     list.forEach(function(item) {
-      pricefeedAggregate[item.key] = {key: item.display, price: 0, sell:{volume:0,price:0,count:0}, buy:{volume:0,price:0,count:0}}
+      pricefeedAggregate[item.key] = {key: item.display, price: 0, sell:{volume:0,price:0,count:0,sizes:0}, buy:{volume:0,price:0,count:0,sizes:0}}
       outp.push(item.key)
       d = template
            .replace('__ID',item.display)
