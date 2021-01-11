@@ -79,7 +79,7 @@ header = (function() {
     // header-io
     d = ''
     d += '<div id="' + containerIO + '-out' + '" class="collapsed">'
-    d +=   '<div id="' + containerIO + '-pre"><br><br>'
+    d +=   '<div id="' + containerIO + '-pre"><br><br><br>'
     d +=   'testing text\nmaybe one day 34asdasdasdasdasdasdasdasdas'
     d +=   '</div>'
     d += '</div>'
