@@ -14,6 +14,8 @@
   <script src='js/utilities.sparkline.js'></script>
   <script src='js/header.js'></script>
   <script src='js/wsock.js'></script>
+  <script src='js/iris.js'></script>
+  <script src='js/iris.ftx.js'></script>
   <script src='modules/token-filter/token-filter.css.js'></script>
   <script src='modules/token-filter/token-filter.options.js'></script>
   <script src='modules/token-filter/token-filter.interface.js'></script>
@@ -44,6 +46,12 @@
        }).then(function() {
          return tokenF.interface.draw('#main')
        })
+
+   // Add on exchanges
+   // ftexchange.com/ws/
+   // www.bitmex.com/realtime
+   // www.deribit.com/ws/api/v2
+   // stream.bybit.com/realtime
  })
  </script>
 </html>
